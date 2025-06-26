@@ -14,11 +14,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up xmake
-        run: |
-          Invoke-WebRequest -Uri https://xmake.io/shget.text -OutFile install.ps1
-          powershell -File install.ps1
-          echo "$HOME/.xmake/bin" | Out-File -FilePath $env:GITHUB_PATH -Append
+      - name: Set xmake env
+        run: echo "XMAKE_GLOBALDIR=${{ runner.workspace }}/xmake-global" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Setup xmake
+        uses: xmake-io/github-action-setup-xmake@v1
+        with:
+          xmake-version: branch@dev
+          actions-cache-folder: .xmake-cache-W${{ steps.cache_key.outputs.key }}
 
       - name: Build with xmake
         run: |
