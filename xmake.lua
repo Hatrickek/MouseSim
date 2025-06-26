@@ -3,7 +3,7 @@ add_rules("mode.debug", "mode.release")
 add_rules("plugin.compile_commands.autoupdate", { outputdir = ".", lsp = "clangd" })
 
 set_project("MouseSim")
-set_version("1.0.0")
+set_version("1.0.4")
 
 -- GLOBAL COMPILER FLAGS --
 set_encodings("utf-8")
