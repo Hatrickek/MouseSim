@@ -58,7 +58,7 @@ void MouseToVjoy::input_logic(INT& axisX,
   if (Input::is_left_mouse_button_down() && Input::is_alphabetic_key_down(17)) {
     //set the low throttle limit
     if (axisY > AXIS_MAX * th_low_limit)
-      axisY = AXIS_MAX * th_low_limit;
+      axisY += AXIS_MAX * th_low_limit;
     th_low_limit = throttle_low_limit;
   }
   else { th_low_limit = 1; }

@@ -55,3 +55,4 @@ packaged
 *.vcxproj.filters
 *.vcxproj.user
 compile_commands.json
+vsxmake2022
