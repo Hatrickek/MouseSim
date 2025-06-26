@@ -28,13 +28,11 @@ target("MouseSim")
     set_kind("binary")
     set_languages("cxx23")
 
-    add_includedirs("./src/**.hpp", { public = true })
     add_files("./src/**.cpp")
     remove_files("./src/socket*")
 
     add_links("./lib/vJoyInterface.lib", "user32")
 
-    -- Copy vJoyInterface.dll to the output directory
     after_build(function (target)
         os.cp("./lib/vJoyInterface.dll", target:targetdir())
     end)
